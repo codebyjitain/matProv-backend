@@ -42,6 +42,10 @@ app.use('/api/links', importantLinkRoutes)
 app.use('/api/branches', branchRoutes)
 app.use('/api/stats', statsRoutes)
 
+app.get('/healthz', (req, res) => {
+  res.status(200).json({ status: 'OK' })
+})
+
 const PORT = process.env.PORT || 5000
 
 const startServer = async () => {
