@@ -14,8 +14,7 @@ const statsRoutes = require('./routes/stats.routes')
 const app = express()
 
 const allowedOrigins = [
-  "http://10.90.182.249:5173",
-  "http://localhost:5173",
+  "https://matprov.netlify.app"
 ];
 
 app.use(cors({
