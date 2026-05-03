@@ -14,7 +14,8 @@ const statsRoutes = require('./routes/stats.routes')
 const app = express()
 
 const allowedOrigins = [
-  "https://matprov.netlify.app" // deployed frontend
+  "http://10.90.182.249:5173",
+  "http://localhost:5173",
 ];
 
 app.use(cors({
@@ -25,7 +26,7 @@ app.use(cors({
     if (allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error("CORS not allowed"));
+      callback(null, false);
     }
   },
   credentials: true
@@ -50,7 +51,7 @@ const PORT = process.env.PORT || 5000
 
 const startServer = async () => {
   await connectDB()
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
+  app.listen(PORT, "0.0.0.0",() => console.log(`Server running on port ${PORT}`))
 }
 
 startServer()

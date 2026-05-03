@@ -49,7 +49,7 @@ const deletePaper = async (id) => {
   if (!paper) throw new Error('Paper not found')
 
   const publicId = paper.fileUrl.split('/').pop().split('.')[0]
-  await cloudinary.uploader.destroy(`campusshelf/${publicId}`, { resource_type: 'raw' })
+  await cloudinary.uploader.destroy(`matprov/${publicId}`, { resource_type: 'auto' })
 
   await PreviousPaper.findByIdAndDelete(id)
   return { message: 'Paper deleted' }
